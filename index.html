@@ -97,6 +97,7 @@
             position: relative;
             padding: 8px 0;
             transition: color 0.3s ease;
+            cursor: pointer;
         }
         
         nav a::after {
@@ -118,6 +119,10 @@
             width: 100%;
         }
         
+        nav a.active::after {
+            width: 100%;
+        }
+        
         .content-card {
             background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(10px);
@@ -134,6 +139,17 @@
             margin-bottom: 1.8rem;
             color: #2d3748;
             line-height: 1.9;
+        }
+        
+        .content-card p a {
+            color: #667eea;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-bottom 0.3s ease;
+        }
+        
+        .content-card p a:hover {
+            border-bottom: 1px solid #667eea;
         }
         
         .content-card p:last-child {
@@ -196,6 +212,12 @@
             font-size: 1.1rem;
             transition: all 0.3s ease;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .social-links a svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
         }
         
         .social-links a:hover {
@@ -294,6 +316,108 @@
                 transform: translateY(30px) translateX(-30px) rotate(240deg);
             }
         }
+        
+        .page {
+            display: none;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        .cv-section {
+            margin-bottom: 50px;
+        }
+        
+        .cv-section h2 {
+            font-size: 1.8rem;
+            color: #1a1a1a;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .cv-item {
+            margin-bottom: 35px;
+        }
+        
+        .cv-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .cv-item h3 {
+            font-size: 1.25rem;
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+        
+        .cv-item .position {
+            font-size: 1.05rem;
+            color: #667eea;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        
+        .cv-item .location-date {
+            font-size: 0.95rem;
+            color: #718096;
+            font-style: italic;
+        }
+        
+        .cv-item ul {
+            margin-top: 15px;
+            padding-left: 20px;
+        }
+        
+        .cv-item li {
+            margin-bottom: 10px;
+            color: #2d3748;
+            line-height: 1.7;
+        }
+        
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .skill-badge {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            color: #667eea;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+        
+        .contact-info {
+            text-align: center;
+            font-size: 0.95rem;
+            color: #4a5568;
+            margin-bottom: 15px;
+        }
+        
+        .contact-info a {
+            color: #667eea;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-bottom 0.3s ease;
+        }
+        
+        .contact-info a:hover {
+            border-bottom: 1px solid #667eea;
+        }
     </style>
 </head>
 <body>
@@ -316,8 +440,8 @@
         
         <main>
             <div id="about" class="page active">
-            <div class="content-card">                                
-                <p> I hope to contribute to <span class="highlight">a sustainable, abundant, and just energy system</span>. 
+                <div class="content-card">
+                    <p> I hope to contribute to <span class="highlight">a sustainable, abundant, and just energy system</span>. 
                     I'm a <a href="https://robertsonscholars.org/" target="_blank" rel="noopener">Robertson Scholar</a> at UNC and Duke, 
                     where I conduct research at the <a href="https://nicholasinstitute.duke.edu/" target="_blank" rel="noopener">Nicholas Insitute</a>, 
                     fund climate companies at <a href="https://www.carolinaangelnetwork.com/" target="_blank" rel="noopener">CAN</a>,
@@ -326,14 +450,15 @@
                     <a href="https://modernhydrogen.com/" target="_blank" rel="noopener">Modern Hydrogen</a>, 
                     and <a href="https://ktslaw.com/" target="_blank" rel="noopener">Kilpatrick Townsend</a>.
                 </p>
-                
-                <div class="skills-grid">
-                    <div class="skill-tag">Energy Systems</div>
-                    <div class="skill-tag">Data Science</div>
-                    <div class="skill-tag">Clean Tech</div>
+                    
+                    <div class="skills-grid">
+                        <div class="skill-tag">Energy Systems</div>
+                        <div class="skill-tag">Data Science</div>
+                        <div class="skill-tag">Clean Tech</div>
+                    </div>
                 </div>
             </div>
-
+            
             <div id="cv" class="page">
                 <div class="content-card">
                     <div class="contact-info">
@@ -480,7 +605,7 @@
                     </div>
                 </div>
             </div>
-
+            
             <div id="projects" class="page">
                 <div class="content-card">
                     <div class="cv-section">
@@ -507,6 +632,7 @@
             <p class="copyright">© 2025 Kien Jonathan Nguyen</p>
         </footer>
     </div>
+    
     <script>
         function showPage(pageId) {
             // Hide all pages
