@@ -309,12 +309,13 @@
         </header>
         
         <nav>
-            <a href="#about">About</a>
-            <a href="#cv">CV</a>
-            <a href="#projects">Projects</a>
+            <a href="#about" onclick="showPage('about')">About</a>
+            <a href="#cv" onclick="showPage('cv')">CV</a>
+            <a href="#projects" onclick="showPage('projects')">Projects</a>
         </nav>
         
         <main>
+            <div id="about" class="page active">
             <div class="content-card">                                
                 <p> I hope to contribute to <span class="highlight">a sustainable, abundant, and just energy system</span>. 
                     I'm a <a href="https://robertsonscholars.org/" target="_blank" rel="noopener">Robertson Scholar</a> at UNC and Duke, 
@@ -330,6 +331,162 @@
                     <div class="skill-tag">Energy Systems</div>
                     <div class="skill-tag">Data Science</div>
                     <div class="skill-tag">Clean Tech</div>
+                </div>
+            </div>
+
+            <div id="cv" class="page">
+                <div class="content-card">
+                    <div class="contact-info">
+                        <a href="mailto:kjnguyen@unc.edu">kjnguyen@unc.edu</a> • (919) 428-9293 • 
+                        <a href="https://www.linkedin.com/in/jonathan-kien-nguyen/" target="_blank" rel="noopener">LinkedIn</a>
+                    </div>
+                    
+                    <div class="cv-section">
+                        <h2>Education</h2>
+                        <div class="cv-item">
+                            <div class="cv-item-header">
+                                <h3>University of North Carolina at Chapel Hill</h3>
+                                <span class="location-date">Expected May 2026</span>
+                            </div>
+                            <div class="position">Bachelor of Science in Environmental Science (Quantitative Energy Systems Track)</div>
+                            <ul>
+                                <li><strong>Robertson Scholar, Class of 2026:</strong> Full-ride merit-based scholarship program at Duke University and UNC-Chapel Hill, covering tuition, room and board, and summer funding. Scholars are offered full access to programs and courses at both institutions.</li>
+                                <li><strong>Leadership & Activities:</strong> James E. Rogers Energy Access Project (Career Trek Organizer, Alumni Outreach Chair), Triangle Ventures (Founding Team), 180 Degrees Consulting at UNC, Duke Center for International Development</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="cv-section">
+                        <h2>Work Experience</h2>
+                        <div class="cv-item">
+                            <div class="cv-item-header">
+                                <h3>Divcon Controls</h3>
+                                <span class="location-date">Dallas, TX • May 2025 – Aug 2025</span>
+                            </div>
+                            <div class="position">Sustainability and Energy Summer Analyst</div>
+                            <ul>
+                                <li>Developed a Life Cycle Analysis model to calculate the embedded carbon for 50+ chilling, HVAC, and control systems of a 262 MW data center and minimize the carbon emissions by 30%.</li>
+                                <li>Worked directly with the Vice President of Sustainability to produce 3 external sustainability reports for Goldman Sachs and its Sustainable and Impact Investing fund.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cv-item">
+                            <div class="cv-item-header">
+                                <h3>Kilpatrick Townsend & Stockton LLP</h3>
+                                <span class="location-date">Raleigh, NC • April 2025 – May 2025</span>
+                            </div>
+                            <div class="position">Environmental Law Clerk</div>
+                            <ul>
+                                <li>Assisted Todd Roessler with conducting 2 market and scientific reports on solar development and air quality.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cv-item">
+                            <div class="cv-item-header">
+                                <h3>Carolina Angel Network</h3>
+                                <span class="location-date">Chapel Hill, NC • Sep 2023 – May 2024</span>
+                            </div>
+                            <div class="position">Climate Venture Fellow</div>
+                            <ul>
+                                <li>Performed sourcing and screening on 100+ UNC startups with a focus on climate and energy technologies.</li>
+                                <li>Created a SaaS platform to track 50+ meetings with founders of General Electric, Pryon, and Cartken.</li>
+                                <li>Led a team of 7 MBA fellows to conduct due diligence on a software company for a Seed-2 $2.25M round.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cv-item">
+                            <div class="cv-item-header">
+                                <h3>Modern Hydrogen</h3>
+                                <span class="location-date">Seattle, WA • Sep 2023 – Dec 2023</span>
+                            </div>
+                            <div class="position">Energy Modeling Intern</div>
+                            <ul>
+                                <li>Developed a financial model and a white paper to evaluate the U.S.'s carbon capture market growth, helping the company prepare for a $32.8M Series-B financing round.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="cv-section">
+                        <h2>Research Experience</h2>
+                        <div class="cv-item">
+                            <div class="cv-item-header">
+                                <h3>Nicholas School of the Environment</h3>
+                                <span class="location-date">Durham, NC • Aug 2024 – Present</span>
+                            </div>
+                            <div class="position">Machine Learning Researcher</div>
+                            <ul>
+                                <li>Detecting distributed solar generation capacity in Cape Town using deep-learning processing of aerial imagery.</li>
+                                <li>Building an econometrics model to estimate the loss of income to Eskom using net metering data.</li>
+                                <li>Conducting a research project at the Nowacek Lab, compiling 250+ spatial data layers into ArcGIS to build species distribution models and assess the vulnerability level of 14 protected marine species in North Carolina.</li>
+                                <li>Drafting a 30-page offshore wind project development plan off the coast of Galveston, Texas.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cv-item">
+                            <div class="cv-item-header">
+                                <h3>Gillings School of Global Public Health</h3>
+                                <span class="location-date">Chapel Hill, NC • Nov 2023 – Present</span>
+                            </div>
+                            <div class="position">Energy Modeling Researcher</div>
+                            <ul>
+                                <li>Conducting a two-year research project at the Sustainable and Resilient Energy Group, building regression and atmospheric models to compare the environmental benefits of 34 wind and solar projects across the Mekong Delta.</li>
+                                <li>Analyzing the expansion capacity of 3 county-level power systems in North Carolina with IRENA's FlexTool.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="cv-section">
+                        <h2>Skills</h2>
+                        <div class="cv-item">
+                            <strong>Languages:</strong>
+                            <div class="skills-list">
+                                <span class="skill-badge">R</span>
+                                <span class="skill-badge">Python</span>
+                                <span class="skill-badge">Julia</span>
+                                <span class="skill-badge">Excel</span>
+                                <span class="skill-badge">ArcGIS</span>
+                                <span class="skill-badge">QGIS</span>
+                                <span class="skill-badge">MATLAB</span>
+                                <span class="skill-badge">SQL</span>
+                                <span class="skill-badge">Stata</span>
+                                <span class="skill-badge">Tableau</span>
+                                <span class="skill-badge">OpenLCA</span>
+                            </div>
+                        </div>
+                        <div class="cv-item">
+                            <strong>Tools:</strong>
+                            <div class="skills-list">
+                                <span class="skill-badge">TensorFlow</span>
+                                <span class="skill-badge">PyTorch</span>
+                                <span class="skill-badge">Pyomo</span>
+                                <span class="skill-badge">scikit-learn</span>
+                                <span class="skill-badge">numpy</span>
+                                <span class="skill-badge">pandas</span>
+                                <span class="skill-badge">matplotlib</span>
+                                <span class="skill-badge">Git</span>
+                                <span class="skill-badge">VBA</span>
+                            </div>
+                        </div>
+                        <div class="cv-item">
+                            <strong>Energy Modeling:</strong>
+                            <div class="skills-list">
+                                <span class="skill-badge">LEAP</span>
+                                <span class="skill-badge">REopt</span>
+                                <span class="skill-badge">FlexTool</span>
+                                <span class="skill-badge">OSeMOSYS</span>
+                                <span class="skill-badge">PySAM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="projects" class="page">
+                <div class="content-card">
+                    <div class="cv-section">
+                        <h2>Projects</h2>
+                        <p style="color: #718096; font-style: italic;">Coming soon...</p>
+                    </div>
                 </div>
             </div>
         </main>
@@ -350,5 +507,27 @@
             <p class="copyright">© 2025 Kien Jonathan Nguyen</p>
         </footer>
     </div>
+    <script>
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Remove active class from all nav links
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Add active class to clicked nav link
+            event.target.classList.add('active');
+            
+            // Scroll to top smoothly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
 </body>
 </html>
