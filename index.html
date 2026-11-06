@@ -86,6 +86,25 @@ nav a[aria-current="page"] { font-weight: 500; }
   font-variant-numeric: tabular-nums; white-space: nowrap;
 }
 .clock b { font-weight: 400; color: var(--ink); }
+.hdr-right { display: flex; align-items: center; gap: .85rem; }
+.theme-btn {
+  position: relative;
+  background: none; border: 0; padding: 5px; margin: -5px; color: var(--ink); cursor: pointer;
+  line-height: 0;
+}
+.theme-btn svg {
+  display: block; width: 15px; height: 15px; opacity: .7;
+  transition: opacity .2s, transform .4s cubic-bezier(.2,.7,.2,1);
+}
+.theme-btn:hover svg, .theme-btn:focus-visible svg { opacity: 1; transform: rotate(-20deg); }
+.theme-btn:focus-visible { outline: 1px dashed var(--ink); outline-offset: 2px; }
+.theme-btn.hint svg { opacity: 1; animation: nudge 1s ease-in-out 2; }
+@keyframes nudge { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(-22deg); } 60% { transform: rotate(14deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .theme-btn svg { transition: none; }
+  .theme-btn:hover svg, .theme-btn:focus-visible svg { transform: none; }
+  .theme-btn.hint svg { animation: none; }
+}
 
 /* ---------- home ---------- */
 .words p { margin: 0; }
@@ -180,13 +199,18 @@ footer {
 </head>
 <body>
 
+<script>try { var t = sessionStorage.getItem('kien-theme'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>
+
 <div class="page">
   <header>
     <nav aria-label="Pages">
       <a href="#" data-view="home">kien nguyen</a>
       <a href="#things" data-view="photos">things</a>
     </nav>
-    <div class="clock" id="clock" aria-label="Local time in San Francisco">SF <b>--:--</b></div>
+    <div class="hdr-right">
+      <div class="clock" id="clock" aria-label="Local time in San Francisco">SF <b>--:--</b></div>
+      <button class="theme-btn" id="theme-btn" type="button" aria-label="Switch to dark mode"></button>
+    </div>
   </header>
 
   <!-- HOME -->
@@ -353,6 +377,40 @@ document.querySelectorAll('.hl[data-note]').forEach(btn => {
     if (opening) { note.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
   });
 });
+
+/* ---------- light / dark switch ---------- */
+(() => {
+  const root = document.documentElement, btn = document.getElementById('theme-btn');
+  const mq = matchMedia('(prefers-color-scheme: dark)');
+  const SVG = 'viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"';
+  const SUN = '<svg ' + SVG + '><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.55 1.55M17.15 17.15l1.55 1.55M5.3 18.7l1.55-1.55M17.15 6.85l1.55-1.55"/></svg>';
+  const MOON = '<svg ' + SVG + '><path d="M20.5 14.2A8.5 8.5 0 1 1 9.8 3.5a6.8 6.8 0 0 0 10.7 10.7z"/></svg>';
+  const current = () => root.getAttribute('data-theme') || (mq.matches ? 'dark' : 'light');
+  const paint = () => {
+    const dark = current() === 'dark';
+    btn.innerHTML = dark ? SUN : MOON;
+    btn.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+    btn.title = dark ? 'Light mode' : 'Dark mode';
+  };
+  btn.addEventListener('click', () => {
+    const next = current() === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { sessionStorage.setItem('kien-theme', next); } catch (e) {}
+    btn.classList.remove('hint');
+    paint();
+  });
+  mq.addEventListener?.('change', paint);
+  new MutationObserver(paint).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+  paint();
+
+  // once per visit: a short wiggle and label so people notice the switch
+  let seen = false;
+  try { seen = sessionStorage.getItem('kien-theme-hint') === '1'; sessionStorage.setItem('kien-theme-hint', '1'); } catch (e) {}
+  if (!seen) {
+    setTimeout(() => btn.classList.add('hint'), 1200);
+    setTimeout(() => btn.classList.remove('hint'), 4200);
+  }
+})();
 
 /* ---------- SF clock ---------- */
 (() => {
@@ -567,5 +625,6 @@ document.querySelectorAll('.hl[data-note]').forEach(btn => {
   document.fonts?.ready.then(rebuild);
 })();
 </script>
+
 </body>
 </html>
